@@ -1,12 +1,130 @@
 <!DOCTYPE html>
+<!-- Tells the browser this document is HTML5. Always put this first. -->
 <html lang="en">
+<!-- lang="en" helps screen readers and search engines know the page language. -->
+
 <head>
+    <!-- Character encoding: UTF-8 supports emojis and most world languages. -->
     <meta charset="UTF-8">
+
+    <!--
+      viewport meta tag: on phones, makes the page scale to the device width
+      instead of behaving like a tiny desktop page. Essential for responsive design.
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday - Zu</title>
+
+    <!-- Text shown in the browser tab and when someone bookmarks the page. -->
+    <title>Happy Birthday, Zu — From Shad</title>
+
+    <!-- Link our stylesheet. The browser loads main.css and applies its rules here. -->
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
-    
+    <!--
+      Skip link: keyboard users can jump straight to the main content,
+      skipping navigation. Hidden until focused (styled in CSS).
+    -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Decorative background layer (gradient + subtle pattern) styled in CSS. -->
+    <div class="page-bg" aria-hidden="true"></div>
+
+    <!-- Site header: short branding line. -->
+    <header class="site-header" role="banner">
+        <p class="site-header__tag">A little corner of the web</p>
+        <h1 class="site-header__title">Happy Birthday, Zu</h1>
+        <p class="site-header__from">With love 💖💝 from <span class="name-highlight">Shad</span></p>
+    </header>
+
+    <!--
+      Main landmark: screen readers list this as the primary content area.
+      id="main-content" pairs with the skip link above.
+    -->
+    <main id="main-content" class="main" role="main">
+
+        <!-- Hero: first visual block; grabs attention with a short line. -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <h2 id="hero-heading" class="hero__heading">Here’s to your day</h2>
+            <p class="hero__lead">
+                May it be full of good music, good people, and moments that feel
+                exactly like <em>you</em>.
+            </p>
+        </section>
+
+        <!-- Personal message card: the heart of the page. -->
+        <section class="card card--message" aria-labelledby="message-heading">
+            <h2 id="message-heading" class="card__title">A note from Shad</h2>
+            <blockquote class="message-quote">
+                <p>
+                    Zu — you bring warmth and wit wherever you go. On your birthday,
+                    I hope you feel seen, celebrated, and a little spoiled. You deserve
+                    the kind of day that lingers as a good memory long after it ends.
+                </p>
+                <footer class="message-quote__footer">— Shad</footer>
+            </blockquote>
+        </section>
+
+        <!-- Three small “wish” tiles: easy to read on any screen width. -->
+        <section class="wishes" aria-labelledby="wishes-heading">
+            <h2 id="wishes-heading" class="wishes__heading">Three wishes for you</h2>
+            <ul class="wishes__list">
+                <!-- Each list item is a self-contained “card” for one wish. -->
+                <li class="wish">
+                    <span class="wish__icon" aria-hidden="true">✦</span>
+                    <h3 class="wish__title">Calm pockets</h3>
+                    <p class="wish__text">Breathing room between the busy bits.</p>
+                </li>
+                <li class="wish">
+                    <span class="wish__icon" aria-hidden="true">♪</span>
+                    <h3 class="wish__title">A perfect song</h3>
+                    <p class="wish__text">The one that hits at the right moment.</p>
+                </li>
+                <li class="wish">
+                    <span class="wish__icon" aria-hidden="true">☼</span>
+                    <h3 class="wish__title">Bright surprises</h3>
+                    <p class="wish__text">Small joys that feel big.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Interactive area: JavaScript hooks into the button and hidden panel. -->
+        <section class="surprise" aria-labelledby="surprise-heading">
+            <h2 id="surprise-heading" class="surprise__heading">One more thing</h2>
+            <p class="surprise__hint">Tap the button — Shad left something extra.</p>
+            <!-- type="button" prevents accidental form submit if this were inside a form. -->
+            <button type="button" class="surprise__btn" id="surprise-btn">
+                Open the birthday note
+            </button>
+            <!-- Hidden until JS reveals it; aria-live politely announces changes to assistive tech. -->
+            <div
+                class="surprise__panel"
+                id="surprise-panel"
+                hidden
+                role="region"
+                aria-live="polite"
+            >
+                <p class="surprise__panel-text">
+                    Today is yours. Eat the cake, laugh too loud, and remember:
+                    you’re appreciated more than a single page can say — but this page
+                    is a start. Happy birthday, Zu.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer: year is filled in by a tiny script so it stays current. -->
+    <footer class="site-footer" role="contentinfo">
+        <p class="site-footer__line">
+            Made with love 💝 — from Shad to Zu.
+        </p>
+        <p class="site-footer__year">
+            <!-- The span’s text is set in script.js so the year stays current. -->
+            &copy; <span id="year"></span>
+        </p>
+    </footer>
+
+    <!-- Scripts load at the end so the HTML exists before our code runs. -->
+    <script src="script.js"></script>
 </body>
 </html>
