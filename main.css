@@ -57,6 +57,10 @@
   --photo-min: min(100%, 220px);
   --photo-gap: var(--space-md);
   --photo-radius: 14px;
+  /* Taller frames + gentler crop on faces (see .photo-card__inner img) */
+  --photo-inner-min-h: clamp(280px, 42vw, 440px);
+  /* First row: wide + neighbor share one grid row — same min height */
+  --photo-inner-min-h-row1: clamp(320px, 52vw, 540px);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -756,18 +760,23 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
+  align-items: stretch;
   grid-template-columns: repeat(auto-fill, minmax(var(--photo-min), 1fr));
   gap: var(--photo-gap);
 }
 
 .photos__item {
   margin: 0;
+  display: flex;
+  min-height: 0;
 }
 
 /* Polaroid-style frame; inner img scales with container width */
 .photo-card {
   margin: 0;
-  height: 100%;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, #ffffff 0%, #fff5fb 40%, #ffe8f4 100%);
@@ -781,7 +790,9 @@ body {
   position: relative;
   border-radius: calc(var(--photo-radius) - 4px);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  min-height: var(--photo-inner-min-h);
+  aspect-ratio: 3 / 4;
+  flex: 0 0 auto;
   background: linear-gradient(
     145deg,
     #ffe0f5 0%,
@@ -797,6 +808,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 18%;
 }
 
 .photo-card__caption {
@@ -814,8 +826,21 @@ body {
     grid-column: span 2;
   }
 
-  .photos__item--wide .photo-card__inner {
-    aspect-ratio: 16 / 9;
+  /*
+    First row: wide tile + the tile beside it share the same grid row height.
+    Drop aspect-ratio there so both image wells stretch to the taller of the two.
+  */
+  .photos__item:nth-child(1) .photo-card__inner,
+  .photos__item:nth-child(2) .photo-card__inner {
+    aspect-ratio: unset;
+    flex: 1 1 auto;
+    min-height: var(--photo-inner-min-h-row1);
+    align-self: stretch;
+  }
+
+  .photos__item:nth-child(1) .photo-card,
+  .photos__item:nth-child(2) .photo-card {
+    min-height: 100%;
   }
 }
 
@@ -846,7 +871,14 @@ body {
   }
 
   .photos__item--wide .photo-card__inner {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
+    flex: 0 0 auto;
+    min-height: var(--photo-inner-min-h);
+  }
+
+  .photos__item:nth-child(1) .photo-card__inner,
+  .photos__item:nth-child(2) .photo-card__inner {
+    min-height: var(--photo-inner-min-h-row1);
   }
 }
 
