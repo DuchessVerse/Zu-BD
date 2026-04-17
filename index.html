@@ -16,6 +16,11 @@
     <!-- Text shown in the browser tab and when someone bookmarks the page. -->
     <title>Happy Birthday, Zu — From Shad</title>
 
+    <!-- Rounded, friendly fonts (optional network; body still works with system fallback). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
     <!-- Link our stylesheet. The browser loads main.css and applies its rules here. -->
     <link rel="stylesheet" href="main.css">
 </head>
@@ -84,6 +89,110 @@
                     <span class="wish__icon" aria-hidden="true">☼</span>
                     <h3 class="wish__title">Bright surprises</h3>
                     <p class="wish__text">Small joys that feel big.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!--
+          Photo gallery: copy a whole <li class="photos__item">…</li> block to add more.
+          - photos__item--wide  → spans two columns on wider screens
+          Put files in images/ and point <img src="…"> at them. Good alt text helps accessibility.
+        -->
+        <section class="photos" aria-labelledby="photos-heading">
+            <h2 id="photos-heading" class="photos__heading">Moments in frames</h2>
+            <p class="photos__intro">
+                A few snapshots — swap in your own pictures anytime.
+            </p>
+            <ul class="photos__grid">
+                <li class="photos__item photos__item--wide">
+                    <figure class="photo-card">
+                        <div class="photo-card__inner">
+                            <img
+                                src="images/placeholder.svg"
+                                alt="Featured birthday photo — replace with your image"
+                                width="1200"
+                                height="675"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <figcaption class="photo-card__caption">Featured moment</figcaption>
+                    </figure>
+                </li>
+                <li class="photos__item">
+                    <figure class="photo-card">
+                        <div class="photo-card__inner">
+                            <img
+                                src="images/placeholder.svg"
+                                alt="Birthday memory — replace with your image"
+                                width="800"
+                                height="600"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <figcaption class="photo-card__caption">Smiles &amp; cake</figcaption>
+                    </figure>
+                </li>
+                <li class="photos__item">
+                    <figure class="photo-card">
+                        <div class="photo-card__inner">
+                            <img
+                                src="images/placeholder.svg"
+                                alt="Birthday memory — replace with your image"
+                                width="800"
+                                height="600"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <figcaption class="photo-card__caption">Golden hour</figcaption>
+                    </figure>
+                </li>
+                <li class="photos__item">
+                    <figure class="photo-card">
+                        <div class="photo-card__inner">
+                            <img
+                                src="images/placeholder.svg"
+                                alt="Birthday memory — replace with your image"
+                                width="800"
+                                height="600"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <figcaption class="photo-card__caption">Quiet sparkle</figcaption>
+                    </figure>
+                </li>
+                <li class="photos__item">
+                    <figure class="photo-card">
+                        <div class="photo-card__inner">
+                            <img
+                                src="images/placeholder.svg"
+                                alt="Birthday memory — replace with your image"
+                                width="800"
+                                height="600"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <figcaption class="photo-card__caption">Friends gathered</figcaption>
+                    </figure>
+                </li>
+                <li class="photos__item">
+                    <figure class="photo-card">
+                        <div class="photo-card__inner">
+                            <img
+                                src="images/placeholder.svg"
+                                alt="Birthday memory — replace with your image"
+                                width="800"
+                                height="600"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <figcaption class="photo-card__caption">One more hug</figcaption>
+                    </figure>
                 </li>
             </ul>
         </section>
